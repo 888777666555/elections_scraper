@@ -1,3 +1,9 @@
+"""
+projekt_3.py: první projekt do Engeto Online Python Akademie
+author: David Cudejko
+email: david.cudejko@gmail.com
+discord: #3576
+"""
 import sys
 import requests
 import csv
