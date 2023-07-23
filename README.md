@@ -3,7 +3,7 @@ Program scraper.py pracuje resp. čte výsledky voleb do poslanecké sněnmovny 
 Pro projekt jsem vybral volby do poslanecke sněmovny ČR 2017.
 Odkaz na web stránku je https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ  
 Program čte informace jako je Code -kod obec, Name-nazev obce, Registred-voliči v seznamu, Envelops-vydané obálky, Valid-platné hlasy a pak jednotlivé politické strany a jejích zisk ve volbách pro konkretní obec.
-Užívatel si vybere z kterého města chce ziskat informace.
+Užívatel si vybere z kterého města chce ziskat informace dle CSV seznam_linku_mest.csv.
 Nakonec program zapisuje dané informace do CSV souboru s názvem "vysledky_voleb.csv".
 
 SPUŠTĚNÍ PROGRAMU :
