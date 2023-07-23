@@ -1,19 +1,20 @@
 POPIS PROGRAMU :
 Program scraper.py pracuje resp. čte výsledky voleb do poslanecké sněnmovny parlamentu České republiky konané v roku 2017.
-Pro projekt jsem vybral část Praha - východ.
-Odkaz na web stránku je https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2109
+Pro projekt jsem vybral volby do poslanecke sněmovny ČR 2017.
+Odkaz na web stránku je https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ  
 Program čte informace jako je Code -kod obec, Name-nazev obce, Registred-voliči v seznamu, Envelops-vydané obálky, Valid-platné hlasy a pak jednotlivé politické strany a jejích zisk ve volbách pro konkretní obec.
-Nakonec program zapisuje dané informace do CSV souboru s názvem "vysledky_praha_vychod.csv".
+Užívatel si vybere z kterého města chce ziskat informace.
+Nakonec program zapisuje dané informace do CSV souboru s názvem "vysledky_voleb.csv".
 
 SPUŠTĚNÍ PROGRAMU :
 Program je možné spusit v Terminal servru pomoci příkazu:
 
-python scraper.py "https://volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xkraj=2&xnumnuts=2109" "vysledky_praha_vychod.csv"
+python scraper.py (konkretni link se seznamu_linku_mest napr. 'https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=1&xnumnuts=1100') "vysledky_voleb.csv"
 
 Pro kontrolu správnosti je přidán výpis :
 Jméno spuštěného programu je: scraper.py
-Jméno Url je: https://volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xkraj=2&xnumnuts=2109
-Jméno souboru je: vysledky_praha_vychod.csv
+Jméno Url je: 'https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=1&xnumnuts=1100'
+Jméno souboru je: "vysledky_voleb.csv"
 
 V případ zadáni nesprávniho příkazu, program užívatele upozorní
 

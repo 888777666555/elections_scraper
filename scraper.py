@@ -8,37 +8,35 @@ import sys
 import requests
 import csv
 from bs4 import BeautifulSoup
+from links import every_second_link
 
 
 # funkce pro kontrolu podminek, argumentu
 def podminky():
-    # Zkontrolujte, zda je uveden správný počet argumentů
     if len(sys.argv) != 3:
         print(
             "Pro spuštění chybí argument, argument1: 'URL' a argument2: 'JMENO SOUBORU'",
             "Zapište: python scraper.py 'URL' 'JMENO SOUBORU'",
         )
         quit()
-    url = "https://volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xkraj=2&xnumnuts=2109"
+
     user_url = sys.argv[1]
     filename = sys.argv[2]
-    response = requests.get(url)
-    user_response = requests.get(user_url)
+    
 
-    # Porovna obsah odpovědí
-    if response.status_code == 200 and user_response.status_code == 200:
-        if response.text == user_response.text:
-            print("odkaz na stranku je v poradku")
-        # elif user_url != sys.argv[1]:
-        #     print('Url odkaz musi byt uveden jako prvni argument')
-        else:
-            print("nespravny odkaz na stranku.")
-            quit()
-    else:
-        print("Chyba: Nepodarilo se nacist data z jedne nebo obou adres URL")
+    # Kontrola zda je url uzivatele pritomna v seznamu  moznosti every_second link
+    if user_url not in every_second_link:
+        print("Zadaná URL není platnou volbou.")
+        quit()
+
+    response = requests.get(user_url)
+
+    if response.status_code != 200:
+        print("Chyba: Nepodařilo se načíst data z URL.")
+        quit()
 
     # Zkontrolujte, zda je zadán správný název souboru
-    if filename != "vysledky_praha_vychod.csv":
+    if filename != "vysledky_voleb.csv":
         print("Nezadal jste ale správné jméno souboru.")
         quit()
 
@@ -57,7 +55,7 @@ prehled()
 
 
 # odkaz na web stranku voleb do poslanecke snemovny
-url = "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2109"
+url = sys.argv[1]
 
 
 # funkce vraci odkazy
@@ -234,5 +232,5 @@ def zapis_data(main_data: list, another_data: list, jmeno_souboru: str) -> csv:
 partai_data = vsechny_data()
 code_name_data = kod_jmeno()
 
-vysledek = zapis_data(code_name_data, partai_data, "vysledky_praha_vychod.csv")
+vysledek = zapis_data(code_name_data, partai_data, "vysledky_voleb.csv")
 print(vysledek)
